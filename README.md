@@ -1,8 +1,8 @@
-# _README Template_
+# _Martial Arts University_
 
 #### By Ryan Ashby, Drew Henderson Zachary Green
 
-#### _Brief Discription. This project was possible under the guidance of Epicodus https://www.epicodus.com/_
+#### _A program using databases and Microsoft Entity Framework. This project was possible under the guidance of Epicodus https://www.epicodus.com/_
 
 ## Technologies Used
 
@@ -14,11 +14,11 @@
 
 ## Description
 
-_Deeper description_
+_You can sign up for classes and you can make classes and you can make a new student and sign the student up for classes and click on things and and_
 
 ## Setup/Installation Requirements
 
-* Visit https://github.com/
+* Visit ```https://github.com/DrewHendersonGitHub/university-registrar```
 * Clone this repository to your desktop.
 * Navigate to the top level directory in your terminal.
 * Run "$ `touch appsettings.json`"
@@ -26,7 +26,7 @@ _Deeper description_
 * Add in this code:
   `{
     "ConnectionStrings": {
-        "DefaultConnection": "Server=localhost;Port=3306;database=to_do_list;uid=root;pwd=[YOUR-PASSWORD-HERE];"
+        "DefaultConnection": "Server=localhost;Port=3306;database=[project_name];uid=root;pwd=[YOUR-PASSWORD-HERE];"
     }
   }`
 * Change the password to be the same password as your mySQL Server Password. If you do not have mySQL server please visit their website: https://www.mysql.com/

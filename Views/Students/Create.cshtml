@@ -1,0 +1,21 @@
+@{
+  Layout = "_Layout";
+}
+
+@model UniversityRegistrar.Models.Student;
+
+<h1>Add a Student to the Records</h1>
+
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.Name);
+  @Html.TextBoxFor(model => model.Name);
+
+  @Html.LabelFor(model => model.DateOfEnrollment);
+  @Html.TextBoxFor(model => model.DateOfEnrollment, new { type = "date"});
+
+  @Html.Label("Courses:");
+  @Html.DropDownList("CourseId");
+
+  <input type="submit" value="Add New Student" class="btn-btn success" required/>
+}

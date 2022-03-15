@@ -1,0 +1,25 @@
+@{
+  Layout = "_Layout";
+}
+
+<header>
+  <p id="course-list">@Html.ActionLink("COURSES", "Index")</p>
+  <p id="edit">@Html.ActionLink("EDIT", "Edit", new { id = Model.CourseId })</p>
+  <p id="delete">@Html.ActionLink("DELETE", "Delete", new { id = Model.CourseId })</p>
+</header>
+
+@model UniversityRegistrar.Models.Course;
+
+<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
+<h4>@Html.DisplayNameFor(model => model.CourseNumber): @Html.DisplayFor(model => model.CourseNumber)</h4>
+
+@if (Model.JoinEntities.Count == 0)
+{
+  <p>"There aren't any students in this class yet"</p>
+}
+
+<h4>Students enrolled:</h4>
+@foreach (var join in Model.JoinEntities)
+{
+    <li>@Html.ActionLink($"{@join.Student.Name}", "Details", "Students", new { id = join.Student.StudentId })</li>
+}

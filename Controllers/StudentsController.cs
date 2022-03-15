@@ -20,5 +20,109 @@ namespace UniversityRegistrar.Controllers
     {
       return View(_db.Students.ToList());
     }
+
+    public ActionResult Create()
+    {
+      ViewBag.CourseId = new SelectList(_db.Courses, "CourseId", "Name");
+      return View();
+    }
+
+    [HttpPost]
+    public ActionResult Create(Student student, int CourseId)
+    {
+      _db.Students.Add(student);
+      _db.SaveChanges();
+      if (CourseId != 0)
+      {
+        _db.Enrollment.Add(new Enrollment() {StudentId = student.StudentId, CourseId = CourseId});
+        _db.SaveChanges();
+      }
+      return RedirectToAction("Index");
+    }
+
+    public ActionResult Details(int id)
+    {
+      var thisStudent = _db.Students
+        .Include(student => student.JoinEntities)
+        .ThenInclude(join => join.Course)
+        .FirstOrDefault(student => student.StudentId == id);
+      return View(thisStudent);
+    }
+
+    public ActionResult Edit(int id)
+    {
+      var thisStudent = _db.Students.FirstOrDefault(student => student.StudentId == id);
+      ViewBag.CourseId = new SelectList(_db.Courses, "CourseId", "Name");
+      return View(thisStudent);
+    }
+
+    [HttpPost]
+    public ActionResult Edit(Student student, int CourseId)
+    {
+      if (CourseId != 0)
+      {
+        _db.Enrollment.Add(new Enrollment() { CourseId = CourseId, StudentId = student.StudentId });
+      }
+      _db.Entry(student).State = EntityState.Modified;
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+
+    public ActionResult Delete(int id)
+    {
+      var thisStudent = _db.Students.FirstOrDefault(student => student.StudentId == id);
+      return View();
+    }
+
+    [HttpPost, ActionName("Delete")]
+    public ActionResult DeleteConfirmed(int id)
+    {
+      var thisStudent = _db.Students.FirstOrDefault(student => student.StudentId == id);
+      _db.Students.Remove(thisStudent);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+
+    public ActionResult AddCourse(int id)
+    {
+      var thisStudent = _db.Students.FirstOrDefault(student => student.StudentId == id);
+      var thisEnrollment = _db.Enrollment.Where(enrollment => enrollment.StudentId == id);
+      
+      List<Course> courses = _db.Courses.ToList();
+      List<Course> CourseList = _db.Courses.ToList();
+
+      foreach (Enrollment enrollment in thisEnrollment)
+      {
+        foreach(Course course in courses)
+        {
+          if (course.CourseId == enrollment.CourseId)
+          {
+            CourseList.Remove(course);
+          }
+        }
+      }
+      ViewBag.CourseId = new SelectList(CourseList, "CourseId", "Name");
+      return View(thisStudent);
+    }
+
+    [HttpPost]
+    public ActionResult AddCourse(Student student, int CourseId)
+    {
+      if (CourseId != 0)
+      {
+        _db.Enrollment.Add(new Enrollment() { CourseId = CourseId, StudentId = student.StudentId } );
+        _db.SaveChanges();
+      }
+      return RedirectToAction("Index");
+    }
+
+    [HttpPost]
+    public ActionResult DeleteCourse(int joinId)
+    {
+      var joinEntry = _db.Enrollment.FirstOrDefault(entry => entry.EnrollmentId == joinId);
+      _db.Enrollment.Remove(joinEntry);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
   }
 }

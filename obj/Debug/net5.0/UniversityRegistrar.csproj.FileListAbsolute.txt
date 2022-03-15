@@ -51,3 +51,5 @@ C:\Users\DrewH\Desktop\university-registrar\obj\Debug\net5.0\UniversityRegistrar
 C:\Users\DrewH\Desktop\university-registrar\obj\Debug\net5.0\ref\UniversityRegistrar.dll
 C:\Users\DrewH\Desktop\university-registrar\obj\Debug\net5.0\UniversityRegistrar.pdb
 C:\Users\DrewH\Desktop\university-registrar\obj\Debug\net5.0\UniversityRegistrar.genruntimeconfig.cache
+C:\Users\DrewH\Desktop\university-registrar\obj\Debug\net5.0\Razor\Views\Shared\Footer.cshtml.g.cs
+C:\Users\DrewH\Desktop\university-registrar\obj\Debug\net5.0\Razor\Views\Students\AddCourse.cshtml.g.cs

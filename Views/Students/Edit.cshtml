@@ -1,0 +1,26 @@
+@{
+  Layout = "_Layout";
+}
+
+<header>
+  <p><strong>@Html.ActionLink("STUDENTS", "Index")</strong></p>
+</header>
+
+@model UniversityRegistrar.Models.Student
+
+<h2>Edit</h2>
+
+<h4>Edit this student profile: @Html.DisplayFor(model => model.Name)</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.StudentId)
+
+  @Html.LabelFor(model => model.Name)
+  @Html.EditorFor(model => model.Name)
+
+  @Html.LabelFor(model => model.DateOfEnrollment);
+  @Html.TextBoxFor(model => model.DateOfEnrollment, new { type = "date"});
+
+  <input type="submit" value="Save" />
+}

@@ -1,0 +1,67 @@
+body
+{
+  text-align: center;
+  background-color: rgb(255, 233, 191);
+}
+
+h1
+{
+  color: rgb(224, 101, 0);
+}
+
+h3, #orange
+{
+  color: rgb(255, 153, 0);
+}
+
+#push
+{
+  margin-top: 100px;
+}
+
+#get-low
+{
+  margin-bottom:10px;
+}
+
+footer
+{
+  position: fixed;
+  width: 100%;
+  height: 60px;
+  bottom: 0px;
+  background-color: rgb(165, 121, 0);
+}
+
+header
+{
+  width: 100%;
+  height: 60px;
+  top: 0px;
+  margin-bottom: 50px;
+  background-color: rgb(165, 121, 0);
+}
+
+#student-list, #edit, #course-info
+{
+  display: inline-block;
+  width: 175px;
+  padding: 5px;
+}
+
+#course-list, #delete, #student-info
+{
+  display: inline-block;
+  width: 175px;
+  padding: 5px;
+}
+
+a
+{
+  color: rgb(126, 0, 0);
+}
+
+a:hover
+{
+  color: rgb(255, 238, 0);
+}
